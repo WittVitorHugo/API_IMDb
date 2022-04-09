@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -11,10 +14,14 @@ public class Main {
 
         // criando cliente
         HttpClient client = HttpClient.newHttpClient();
+
+        File file = new File("src/api_key.txt");
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+
         // criando request
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(URI.create("https://imdb-api.com/en/API/Top250Movies/SECRET_API_KEY"))
+                .uri(URI.create(reader.readLine()))
                 .GET()
                 .build();
 
