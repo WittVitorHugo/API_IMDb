@@ -36,7 +36,6 @@ public class Main {
             if (beginMatcher.find()) begin = beginMatcher.end();
             if (endMatcher.find()) end = endMatcher.start();
 
-
             lista.add(movie.substring(begin, end));
         }
         return lista;
@@ -60,7 +59,7 @@ public class Main {
         // Armazenando a resposta
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String json = response.body().toString();
+        String json = response.body();
 
 
         String str = parseJsonMovies(json, "[", "]");
